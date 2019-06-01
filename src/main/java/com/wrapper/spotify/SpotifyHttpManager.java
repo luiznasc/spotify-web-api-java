@@ -283,7 +283,13 @@ public class SpotifyHttpManager implements IHttpManager {
       }
     }
 
-    switch (statusLine.getStatusCode()) {
+    return evaluateStatusCode(httpResponse, statusLine, responseBody, errorMessage);
+  }
+
+private String evaluateStatusCode(HttpResponse httpResponse, final StatusLine statusLine, final String responseBody,
+		String errorMessage) throws BadRequestException, UnauthorizedException, ForbiddenException, NotFoundException,
+		TooManyRequestsException, InternalServerErrorException, BadGatewayException, ServiceUnavailableException {
+	switch (statusLine.getStatusCode()) {
       case HttpStatus.SC_OK:
         return responseBody;
       case HttpStatus.SC_CREATED:
@@ -320,7 +326,7 @@ public class SpotifyHttpManager implements IHttpManager {
       default:
         return responseBody;
     }
-  }
+}
 
   public static class Builder {
     private HttpHost proxy;

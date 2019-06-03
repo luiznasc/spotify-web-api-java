@@ -59,8 +59,7 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder owner_id(final String owner_id) {
-      assert (owner_id != null);
-      assert (!owner_id.equals(""));
+      assertHasAndNotNull(owner_id);
       return setPathParameter("owner_id", owner_id);
     }
 
@@ -72,8 +71,7 @@ public class UnfollowPlaylistRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assertHasAndNotNull(playlist_id);
       return setPathParameter("playlist_id", playlist_id);
     }
 

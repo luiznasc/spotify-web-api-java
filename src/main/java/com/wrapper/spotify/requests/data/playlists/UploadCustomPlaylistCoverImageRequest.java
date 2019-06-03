@@ -65,8 +65,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
      */
     @Deprecated
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.equals(""));
+      assertHasAndNotNull(user_id);
       return setPathParameter("user_id", user_id);
     }
 
@@ -78,8 +77,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assertHasAndNotNull(playlist_id);
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -90,8 +88,7 @@ public class UploadCustomPlaylistCoverImageRequest extends AbstractDataRequest {
      * @return A {@link UploadCustomPlaylistCoverImageRequest.Builder}.
      */
     public Builder image_data(final String image_data) {
-      assert (image_data != null);
-      assert (!image_data.equals(""));
+      assertHasAndNotNull(image_data);
       assert (image_data.getBytes().length <= 256000);
       return setBody(new StringEntity(image_data, ContentType.IMAGE_JPEG));
     }

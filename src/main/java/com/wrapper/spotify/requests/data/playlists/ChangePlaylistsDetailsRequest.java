@@ -64,8 +64,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
      */
     @Deprecated
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.equals(""));
+      assertHasAndNotNull(user_id);
       return setPathParameter("user_id", user_id);
     }
 
@@ -77,8 +76,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assertHasAndNotNull(playlist_id);
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -89,8 +87,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
      * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
      */
     public Builder name(final String name) {
-      assert (name != null);
-      assert (!name.equals(""));
+      assertHasAndNotNull(name);
       return setBodyParameter("name", name);
     }
 
@@ -123,8 +120,7 @@ public class ChangePlaylistsDetailsRequest extends AbstractDataRequest {
      * @return A {@link ChangePlaylistsDetailsRequest.Builder}.
      */
     public Builder description(final String description) {
-      assert (description != null);
-      assert (!description.equals(""));
+      assertHasAndNotNull(description);
       return setBodyParameter("description", description);
     }
 

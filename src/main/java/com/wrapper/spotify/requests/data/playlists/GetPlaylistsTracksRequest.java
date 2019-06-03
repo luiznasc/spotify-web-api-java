@@ -63,8 +63,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
      */
     @Deprecated
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.equals(""));
+      assertHasAndNotNull(user_id);
       return setPathParameter("user_id", user_id);
     }
 
@@ -76,8 +75,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assertHasAndNotNull(playlist_id);
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -91,8 +89,7 @@ public class GetPlaylistsTracksRequest extends AbstractDataRequest {
      * Spotify: More Details on Playlist Fields</a>
      */
     public Builder fields(final String fields) {
-      assert (fields != null);
-      assert (!fields.equals(""));
+      assertHasAndNotNull(fields);
       return setQueryParameter("fields", fields);
     }
 

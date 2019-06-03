@@ -60,8 +60,7 @@ public class FollowPlaylistRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder owner_id(final String owner_id) {
-      assert (owner_id != null);
-      assert (!owner_id.equals(""));
+      assertHasAndNotNull(owner_id);
       return setPathParameter("owner_id", owner_id);
     }
 

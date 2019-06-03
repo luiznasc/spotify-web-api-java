@@ -68,8 +68,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
      */
     @Deprecated
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.equals(""));
+      assertHasAndNotNull(user_id);
       return setPathParameter("user_id", user_id);
     }
 
@@ -81,8 +80,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder playlist_id(final String playlist_id) {
-      assert (playlist_id != null);
-      assert (!playlist_id.equals(""));
+      assertHasAndNotNull(playlist_id);
       return setPathParameter("playlist_id", playlist_id);
     }
 
@@ -125,8 +123,7 @@ public class RemoveTracksFromPlaylistRequest extends AbstractDataRequest {
      * Spotify: Version Control and Snapshots</a>
      */
     public Builder snapshotId(final String snapshotId) {
-      assert (snapshotId != null);
-      assert (!snapshotId.equals(""));
+      assertHasAndNotNull(snapshotId);
       return setBodyParameter("snapshot_id", snapshotId);
     }
 

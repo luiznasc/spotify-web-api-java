@@ -56,8 +56,7 @@ public class GetUsersProfileRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.equals(""));
+      assertHasAndNotNull(user_id);
       return setPathParameter("user_id", user_id);
     }
 

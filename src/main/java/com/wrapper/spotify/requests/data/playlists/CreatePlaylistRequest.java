@@ -62,8 +62,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify: URIs &amp; IDs</a>
      */
     public Builder user_id(final String user_id) {
-      assert (user_id != null);
-      assert (!user_id.equals(""));
+      assertHasAndNotNull(user_id);
       return setPathParameter("user_id", user_id);
     }
 
@@ -75,8 +74,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
     public Builder name(final String name) {
-      assert (name != null);
-      assert (!name.equals(""));
+      assertHasAndNotNull(name);
       return setBodyParameter("name", name);
     }
 
@@ -113,8 +111,7 @@ public class CreatePlaylistRequest extends AbstractDataRequest {
      * @return A {@link CreatePlaylistRequest.Builder}.
      */
     public Builder description(final String description) {
-      assert (description != null);
-      assert (!description.equals(""));
+      assertHasAndNotNull(description);
       return setBodyParameter("description", description);
     }
 

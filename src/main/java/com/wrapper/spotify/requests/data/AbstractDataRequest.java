@@ -10,9 +10,8 @@ public abstract class AbstractDataRequest extends AbstractRequest {
   public static abstract class Builder<BuilderType extends Builder<?>> extends AbstractRequest.Builder<BuilderType> {
     protected Builder(String accessToken) {
       super();
-
-      assert (accessToken != null);
-      assert (!accessToken.equals(""));
+      
+      assertHasAndNotNull(accessToken);
 
       setHeader("Authorization", "Bearer " + accessToken);
     }

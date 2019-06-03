@@ -205,6 +205,16 @@ public abstract class AbstractRequest implements IRequest {
 
     protected Builder() {
     }
+    
+    public void assertHasAndNotNull(String str) {
+  	  assert(str != null);
+  	  assert(!str.equals(""));
+    }
+    
+    public void assertHasAndNotNull(String str1, String str2) {
+      assert(str1 != null);
+      assert(!str2.equals(""));
+    }
 
     @SuppressWarnings("unchecked")
     public T setHttpManager(final IHttpManager httpManager) {
@@ -215,16 +225,14 @@ public abstract class AbstractRequest implements IRequest {
 
     @SuppressWarnings("unchecked")
     public T setScheme(final String scheme) {
-      assert (scheme != null);
-      assert (!scheme.equals(""));
+      assertHasAndNotNull(scheme);
       this.scheme = scheme;
       return (T) this;
     }
 
     @SuppressWarnings("unchecked")
     public T setHost(final String host) {
-      assert (host != null);
-      assert (!scheme.equals(""));
+      assertHasAndNotNull(host, scheme);
       this.host = host;
       return (T) this;
     }
@@ -239,9 +247,7 @@ public abstract class AbstractRequest implements IRequest {
 
     @SuppressWarnings("unchecked")
     public T setPath(final String path) {
-      assert (path != null);
-      assert (!path.equals(""));
-
+      assertHasAndNotNull(path);
       String builtPath = path;
 
       for (NameValuePair nameValuePair : pathParameters) {
@@ -254,8 +260,9 @@ public abstract class AbstractRequest implements IRequest {
 
     @SuppressWarnings("unchecked")
     public T setPathParameter(final String name, final String value) {
-      assert (name != null && value != null);
-      assert (!name.equals("") && !value.equals(""));
+    	
+      assertHasAndNotNull(name);
+      assertHasAndNotNull(value);
 
       String encodedValue = null;
 
@@ -284,8 +291,7 @@ public abstract class AbstractRequest implements IRequest {
 
     @SuppressWarnings("unchecked")
     public <X> T setQueryParameter(final String name, final X value) {
-      assert (name != null);
-      assert (!name.equals(""));
+      assertHasAndNotNull(name);
       assert (value != null);
       this.queryParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
       return (T) this;
@@ -293,8 +299,7 @@ public abstract class AbstractRequest implements IRequest {
 
     @SuppressWarnings("unchecked")
     public <X> T setHeader(final String name, final X value) {
-      assert (name != null);
-      assert (!name.equals(""));
+      assertHasAndNotNull(name);
       assert (value != null);
       this.headers.add(new BasicHeader(name, String.valueOf(value)));
       return (T) this;
@@ -315,8 +320,7 @@ public abstract class AbstractRequest implements IRequest {
 
     @SuppressWarnings("unchecked")
     public <X> T setBodyParameter(final String name, final X value) {
-      assert (name != null);
-      assert (!name.equals(""));
+      assertHasAndNotNull(name);
       assert (value != null);
       this.bodyParameters.add(new BasicNameValuePair(name, String.valueOf(value)));
       return (T) this;

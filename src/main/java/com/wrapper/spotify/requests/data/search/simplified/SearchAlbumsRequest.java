@@ -58,8 +58,7 @@ public class SearchAlbumsRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/search-item/#tablepress-47">Spotify: Search Query Options</a>
      */
     public Builder q(final String q) {
-      assert (q != null);
-      assert (!q.equals(""));
+      assertHasAndNotNull(q);
       return setQueryParameter("q", q);
     }
 

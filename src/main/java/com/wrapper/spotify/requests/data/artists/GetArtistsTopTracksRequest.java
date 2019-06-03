@@ -56,8 +56,7 @@ public class GetArtistsTopTracksRequest extends AbstractDataRequest {
      * @see <a href="https://developer.spotify.com/web-api/user-guide/#spotify-uris-and-ids">Spotify URIs &amp; IDs</a>
      */
     public Builder id(final String id) {
-      assert (id != null);
-      assert (!id.equals(""));
+      assertHasAndNotNull(id);
       return setPathParameter("id", id);
     }
 

@@ -324,12 +324,12 @@ private String evaluateStatusCode(HttpResponse httpResponse, final StatusLine st
     }
 }
 
-private void checksHeader(String errorMessage, Header header) throws TooManyRequestsException {
+private void checksHeader(String message, Header header) throws TooManyRequestsException {
 	if (header != null) {
-	  throw new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue()));
-	} else {
-	  throw new TooManyRequestsException(errorMessage);
-	}
+		  throw new TooManyRequestsException(message, Integer.parseInt(header.getValue()));
+		} else {
+		  throw new TooManyRequestsException(message);
+		}
 }
 
   public static class Builder {

@@ -67,14 +67,7 @@ public class SpotifyHttpManager implements IHttpManager {
             .setCharset(Charset.forName("UTF-8"))
             .build();
 
-    new BasicCredentialsProvider();
-    CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-    if (proxy != null) {
-      credentialsProvider.setCredentials(
-              new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
-              proxyCredentials
-      );
-    }
+    CredentialsProvider credentialsProvider = credentialsProvider();
 
     RequestConfig requestConfig = RequestConfig
             .custom()
@@ -99,6 +92,18 @@ public class SpotifyHttpManager implements IHttpManager {
             .setDefaultRequestConfig(requestConfig)
             .build();
   }
+
+private CredentialsProvider credentialsProvider() {
+	new BasicCredentialsProvider();
+    CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+    if (proxy != null) {
+      credentialsProvider.setCredentials(
+              new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
+              proxyCredentials
+      );
+    }
+	return credentialsProvider;
+}
 
   public static URI makeUri(String uriString) {
     try {

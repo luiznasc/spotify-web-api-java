@@ -312,11 +312,7 @@ private String evaluateStatusCode(HttpResponse httpResponse, final StatusLine st
         // Sets "Retry-After" header as described at https://beta.developer.spotify.com/documentation/web-api/#rate-limiting
         Header header = httpResponse.getFirstHeader("Retry-After");
 
-        if (header != null) {
-          throw new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue()));
-        } else {
-          throw new TooManyRequestsException(errorMessage);
-        }
+        checksHeader(errorMessage, header);
       case HttpStatus.SC_INTERNAL_SERVER_ERROR:
         throw new InternalServerErrorException(errorMessage);
       case HttpStatus.SC_BAD_GATEWAY:
@@ -326,6 +322,14 @@ private String evaluateStatusCode(HttpResponse httpResponse, final StatusLine st
       default:
         return responseBody;
     }
+}
+
+private void checksHeader(String errorMessage, Header header) throws TooManyRequestsException {
+	if (header != null) {
+	  throw new TooManyRequestsException(errorMessage, Integer.parseInt(header.getValue()));
+	} else {
+	  throw new TooManyRequestsException(errorMessage);
+	}
 }
 
   public static class Builder {

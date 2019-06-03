@@ -69,7 +69,19 @@ public class SpotifyHttpManager implements IHttpManager {
 
     CredentialsProvider credentialsProvider = credentialsProvider();
 
-    RequestConfig requestConfig = RequestConfig
+    RequestConfig requestConfig = requestConfig(builder);
+
+    this.httpClient = CachingHttpClients
+            .custom()
+            .setCacheConfig(cacheConfig)
+            .setDefaultConnectionConfig(connectionConfig)
+            .setDefaultCredentialsProvider(credentialsProvider)
+            .setDefaultRequestConfig(requestConfig)
+            .build();
+  }
+
+private RequestConfig requestConfig(Builder builder) {
+	RequestConfig requestConfig = RequestConfig
             .custom()
             .setCookieSpec(CookieSpecs.DEFAULT)
             .setProxy(proxy)
@@ -83,15 +95,8 @@ public class SpotifyHttpManager implements IHttpManager {
                     ? builder.socketTimeout
                     : RequestConfig.DEFAULT.getSocketTimeout())
             .build();
-
-    this.httpClient = CachingHttpClients
-            .custom()
-            .setCacheConfig(cacheConfig)
-            .setDefaultConnectionConfig(connectionConfig)
-            .setDefaultCredentialsProvider(credentialsProvider)
-            .setDefaultRequestConfig(requestConfig)
-            .build();
-  }
+	return requestConfig;
+}
 
 private CredentialsProvider credentialsProvider() {
 	new BasicCredentialsProvider();

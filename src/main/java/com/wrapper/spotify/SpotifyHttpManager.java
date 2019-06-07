@@ -99,15 +99,18 @@ private RequestConfig requestConfig(Builder builder) {
 }
 
 private CredentialsProvider credentialsProvider() {
-	new BasicCredentialsProvider();
     CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-    if (proxy != null) {
+    updateCredentials(credentialsProvider);
+	return credentialsProvider;
+}
+
+private void updateCredentials(CredentialsProvider credentialsProvider) {
+	if (proxy != null) {
       credentialsProvider.setCredentials(
               new AuthScope(proxy.getHostName(), proxy.getPort(), null, proxy.getSchemeName()),
               proxyCredentials
       );
     }
-	return credentialsProvider;
 }
 
   public static URI makeUri(String uriString) {
